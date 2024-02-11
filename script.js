@@ -9,6 +9,7 @@ const players = {
 };
 
 let move = "cross";
+let totalMoves = 0;
 
 const checkWinner = function (line) {
   const rowData = [];
@@ -35,6 +36,10 @@ container.addEventListener("click", function (e) {
   if (element.innerHTML) return;
   if (!element) return;
   if (!element.classList.contains("cell")) return;
+  totalMoves++;
+  if (totalMoves === 9) {
+    heading.innerHTML = "DRAW";
+  }
   element.innerHTML = players[move];
 
   const row = element.classList[1];
